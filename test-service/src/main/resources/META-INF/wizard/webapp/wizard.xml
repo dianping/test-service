@@ -1,0 +1,12 @@
+<wizard package="com.dianping.test">
+   <webapp package="com.dianping.test" name="test" webres="false" cat="true" plugin-management="true">
+      <module name="service" path="service" default="true">
+         <page name="home" title="Home" default="true" path="home">
+            <description>Home</description>
+         </page>
+         <page name="task" title="Task" path="task">
+            <description>Task</description>
+         </page>
+      </module>
+   </webapp>
+</wizard>

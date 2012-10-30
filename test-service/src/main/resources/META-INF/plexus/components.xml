@@ -1,0 +1,43 @@
+<plexus>
+	<components>
+		<component>
+			<role>com.site.web.mvc.model.ModuleRegistry</role>
+			<implementation>com.site.web.mvc.model.ModuleRegistry</implementation>
+			<configuration>
+				<modules>
+					<module default="true">com.dianping.test.service.ServiceModule</module>
+				</modules>
+			</configuration>
+		</component>
+		<component>
+			<role>com.dianping.test.service.ServiceModule</role>
+			<implementation>com.dianping.test.service.ServiceModule</implementation>
+		</component>
+		<component>
+			<role>com.dianping.test.service.page.home.Handler</role>
+			<implementation>com.dianping.test.service.page.home.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>com.dianping.test.service.page.home.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.dianping.test.service.page.home.JspViewer</role>
+			<implementation>com.dianping.test.service.page.home.JspViewer</implementation>
+		</component>
+		<component>
+			<role>com.dianping.test.service.page.task.Handler</role>
+			<implementation>com.dianping.test.service.page.task.Handler</implementation>
+			<requirements>
+				<requirement>
+					<role>com.dianping.test.service.page.task.JspViewer</role>
+				</requirement>
+			</requirements>
+		</component>
+		<component>
+			<role>com.dianping.test.service.page.task.JspViewer</role>
+			<implementation>com.dianping.test.service.page.task.JspViewer</implementation>
+		</component>
+	</components>
+</plexus>
