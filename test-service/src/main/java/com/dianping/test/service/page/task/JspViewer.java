@@ -9,7 +9,9 @@ public class JspViewer extends BaseJspViewer<ServicePage, Action, Context, Model
 		Action action = model.getAction();
 
 		switch (action) {
-		case VIEW:
+		case LIST_TASKS:
+		case SUBMIT_TASK:
+		case GET_TASK_STATUS:
 			return JspFile.VIEW.getPath();
 		}
 

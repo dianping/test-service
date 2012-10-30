@@ -11,8 +11,23 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 	@FieldMeta("op")
 	private Action m_action;
 
-	public void setAction(Action action) {
-		m_action = action;
+	@FieldMeta("host")
+	private String m_host;
+
+	@FieldMeta("port")
+	private int m_port = 80;
+
+	@FieldMeta("feature")
+	private String m_feature;
+
+	@FieldMeta("env")
+	private String m_env;
+
+	@FieldMeta("token")
+	private String m_token;
+
+	public void setAction(String action) {
+		m_action = Action.getByName(action, Action.LIST_TASKS);
 	}
 
 	@Override
@@ -25,6 +40,46 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 		return m_page;
 	}
 
+	public String getHost() {
+		return m_host;
+	}
+
+	public void setHost(String host) {
+		m_host = host;
+	}
+
+	public int getPort() {
+		return m_port;
+	}
+
+	public void setPort(int port) {
+		m_port = port;
+	}
+
+	public String getFeature() {
+		return m_feature;
+	}
+
+	public void setFeature(String feature) {
+		m_feature = feature;
+	}
+
+	public String getEnv() {
+		return m_env;
+	}
+
+	public void setEnv(String env) {
+		m_env = env;
+	}
+
+	public String getToken() {
+		return m_token;
+	}
+
+	public void setToken(String token) {
+		m_token = token;
+	}
+
 	@Override
 	public void setPage(String page) {
 		m_page = ServicePage.getByName(page, ServicePage.TASK);
@@ -32,5 +87,8 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 
 	@Override
 	public void validate(ActionContext<?> ctx) {
+		if (m_action == null) {
+			m_action = Action.LIST_TASKS;
+		}
 	}
 }

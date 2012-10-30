@@ -1,7 +1,11 @@
 package com.dianping.test.service.page.task;
 
 public enum Action implements com.site.web.mvc.Action {
-	VIEW("view");
+	LIST_TASKS("listTasks"),
+
+	SUBMIT_TASK("submitTask"),
+
+	GET_TASK_STATUS("getTaskStatus");
 
 	private String m_name;
 

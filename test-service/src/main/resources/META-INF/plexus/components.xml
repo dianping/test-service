@@ -33,11 +33,18 @@
 				<requirement>
 					<role>com.dianping.test.service.page.task.JspViewer</role>
 				</requirement>
+				<requirement>
+					<role>com.dianping.test.service.page.task.TaskManager</role>
+				</requirement>
 			</requirements>
 		</component>
 		<component>
 			<role>com.dianping.test.service.page.task.JspViewer</role>
 			<implementation>com.dianping.test.service.page.task.JspViewer</implementation>
+		</component>
+		<component>
+			<role>com.dianping.test.service.page.task.TaskManager</role>
+			<implementation>com.dianping.test.service.page.task.TaskManager</implementation>
 		</component>
 	</components>
 </plexus>
