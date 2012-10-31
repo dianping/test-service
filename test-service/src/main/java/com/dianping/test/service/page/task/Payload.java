@@ -4,6 +4,7 @@ import com.dianping.test.service.ServicePage;
 import com.site.web.mvc.ActionContext;
 import com.site.web.mvc.ActionPayload;
 import com.site.web.mvc.payload.annotation.FieldMeta;
+import com.site.web.mvc.payload.annotation.PathMeta;
 
 public class Payload implements ActionPayload<ServicePage, Action> {
 	private ServicePage m_page;
@@ -23,8 +24,8 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 	@FieldMeta("env")
 	private String m_env;
 
-	@FieldMeta("token")
-	private String m_token;
+	@PathMeta("sections")
+	private String[] m_sections;
 
 	public void setAction(String action) {
 		m_action = Action.getByName(action, Action.LIST_TASKS);
@@ -72,12 +73,16 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 		m_env = env;
 	}
 
-	public String getToken() {
-		return m_token;
+	public String getId() {
+		if (m_sections != null && m_sections.length > 0) {
+			return m_sections[0];
+		}
+
+		return null;
 	}
 
-	public void setToken(String token) {
-		m_token = token;
+	public void setSections(String[] sections) {
+		m_sections = sections;
 	}
 
 	@Override
@@ -88,7 +93,11 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 	@Override
 	public void validate(ActionContext<?> ctx) {
 		if (m_action == null) {
-			m_action = Action.LIST_TASKS;
+			if (getId() != null) {
+				m_action = Action.GET_TASK_STATUS;
+			} else {
+				m_action = Action.LIST_TASKS;
+			}
 		}
 	}
 }

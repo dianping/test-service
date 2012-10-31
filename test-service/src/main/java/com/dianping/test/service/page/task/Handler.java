@@ -29,7 +29,7 @@ public class Handler implements PageHandler<Context> {
 			Task task = new Task(payload.getHost(), payload.getPort(), payload.getFeature(), payload.getEnv());
 
 			if (m_manager.submitTask(task)) {
-				ctx.setToken(task.getId());
+				ctx.setId(task.getId());
 			}
 		}
 	}
@@ -43,12 +43,15 @@ public class Handler implements PageHandler<Context> {
 
 		switch (action) {
 		case SUBMIT_TASK:
-			model.setToken(ctx.getToken());
+			model.setToken(ctx.getId());
 			break;
 		case GET_TASK_STATUS:
-			Task task = m_manager.getTask(payload.getToken());
+			Task task = m_manager.getTask(payload.getId());
 
 			model.setTask(task);
+			break;
+		case LIST_TASKS:
+			model.setTasks(m_manager.listActiveTasks());
 			break;
 		}
 
