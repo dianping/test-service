@@ -3,4 +3,9 @@
 <jsp:useBean id="payload" type="com.dianping.test.service.page.home.Payload" scope="request"/>
 <jsp:useBean id="model" type="com.dianping.test.service.page.home.Model" scope="request"/>
 
-View of home page under service
+Test Service Home Page
+
+<br><br>
+<a href="${model.moduleUri}/task">Task List</a>
+<br><br>
+<a href="${model.moduleUri}/task?op=submitTask">Submit Task</a>
