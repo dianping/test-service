@@ -47,6 +47,8 @@ public class Handler implements PageHandler<Context> {
 			break;
 		case GET_TASK_STATUS:
 			Task task = m_manager.getTask(payload.getId());
+			if(task != null)
+				task.setStatus(m_manager.getStatus(payload.getId(), task.getJobNum()));
 
 			model.setTask(task);
 			break;

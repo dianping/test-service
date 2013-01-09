@@ -8,12 +8,13 @@
 	<c:when test="${model.action.name eq 'submitTask' }">
 		<c:if test="${empty model.token}">
 		{
-			"status": "submit failed"
+			"status": "error"
+			"message": "no feature"
 		}
 		</c:if>
 		<c:if test="${not empty model.token}">
 		{
-			"status": "submitted",
+			"status": "ok",
 			"token": "${model.token}"
 		}
 		</c:if>
