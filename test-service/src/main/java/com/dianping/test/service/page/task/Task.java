@@ -24,6 +24,10 @@ public class Task {
 		m_feature = feature;
 		m_env = env;
 	}
+	
+	public int getJobNum() {
+		return m_feature.split("\\|").length;
+	}
 
 	public String getEnv() {
 		return m_env;
@@ -70,7 +74,9 @@ public class Task {
 
 		RUNNING,
 
-		DONE,
+		FAIL,
+		
+		SUCCESS,
 
 		ABORTED;
 

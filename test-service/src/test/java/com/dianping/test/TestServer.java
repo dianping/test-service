@@ -28,7 +28,7 @@ public class TestServer extends JettyServer {
 
    @Override
    protected String getContextPath() {
-      return "/test";
+      return "/service";
    }
 
    @Override
@@ -38,13 +38,12 @@ public class TestServer extends JettyServer {
 
    @Override
    protected void postConfigure(WebAppContext context) {
-      context.addFilter(GzipFilter.class, "/service/*", Handler.ALL);
    }
 
    @Test
    public void startWebapp() throws Exception {
       // open the page in the default browser
-      display("/test/service");
+      display("/service/service");
       waitForAnyKey();
    }
 }

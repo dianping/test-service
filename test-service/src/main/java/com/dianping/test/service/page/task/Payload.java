@@ -23,6 +23,9 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 
 	@FieldMeta("env")
 	private String m_env;
+	
+	@FieldMeta("token")
+	private String m_token;
 
 	@PathMeta("sections")
 	private String[] m_sections;
@@ -74,6 +77,9 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 	}
 
 	public String getId() {
+		if (m_token != null && !m_token.equals("")) {
+			return m_token;
+		}
 		if (m_sections != null && m_sections.length > 0) {
 			return m_sections[0];
 		}
@@ -99,5 +105,13 @@ public class Payload implements ActionPayload<ServicePage, Action> {
 				m_action = Action.LIST_TASKS;
 			}
 		}
+	}
+
+	public void setToken(String m_token) {
+		this.m_token = m_token;
+	}
+
+	public String getToken() {
+		return m_token;
 	}
 }
